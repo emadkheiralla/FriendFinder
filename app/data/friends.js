@@ -6,10 +6,7 @@ function Friend(name, photo, score) {
     this.photo_path = photo;
     this.score = score;
 };
-var Friend = new Friend("Emad Kheiralla", "Photo", 9);
-// friendsArray
 var friendsArray = [];
-friendsArray.push[Friend];
 
 
 function addFriend(friend) {

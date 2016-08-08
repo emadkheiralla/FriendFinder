@@ -29,7 +29,7 @@
 						<h3 class="panel-title"><strong>Survey</strong></h3>
 					</div>
 					<div class="panel-body">
-						<form action="" method="POST" role="form">
+						<form action="/api/newfriend" method="post">
 
 							<div class="form-group">
 								<label for="">Name</label>
@@ -176,30 +176,8 @@
 							<br>
 
 							<!-- Submit Button -->
-							<button type="submit" data-toggle="modal" action="/data/friends" method="post" class="btn btn-primary btn-lg" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
+							<button type="submit" class="btn btn-primary btn-lg" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
 					 Submit Survey</button>
-
-					 		<!-- Modal -->
-							<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-							  <div class="modal-dialog" role="document">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							          <span aria-hidden="true">&times;</span>
-							        </button>
-							        <h4 class="modal-title" id="myModalLabel">Your closest match is:</h4>
-							      </div>
-							      <div class="modal-body">
-							        <p></p>
-							        <img src="">
-							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							        <button type="button" class="btn btn-primary">Save changes</button>
-							      </div>
-							    </div>
-							  </div>
-							</div>
 
 						</form>
 					</div>
@@ -208,41 +186,19 @@
 		</div>
 	</div>
 
-	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
 	<script type="text/javascript">
-	
-		$("#submit").on("click", function(){
-			
-			// Here we grab the form elements
-			var newSurvey = {
-				name: $('#name').val().trim(),
-				photo: $('#photo').val().trim(),
-				q1: $('#q1').val(),
-				q2: $('#q2').val(),
-				q3: $('#q3').val(),
-				q4: $('#q4').val(),
-				q5: $('#q5').val(),
-				q6: $('#q6').val(),
-				q7: $('#q7').val(),
-				q8: $('#q8').val(),
-				q9: $('#q9').val(),
-				q10: $('#q10').val()
-			};
-			console.log(newSurvey);
 
-			window.location.href = "/data/friends";
-		    $.post(window.location.href, newSurvey,
+		$("#home").on("click", function(){
+			window.location.href = "/";
+
+		    $.get(window.location.href,
 		    function(data){
-		    	
-		    	// Clear the form when submitting
-	    		function displaymessage() {
-				    $("select").val("0");
-				}
-				displaymessage();
+		    	console.log(data);
 		    });
-			return false;
 		});
+	
 	</script>
 
 </body>
