@@ -44,6 +44,7 @@ function postFriends(app) {
         for (var i = 0; i < newArray.length; i++) {
             score += sum(newArray[i], newArray[i++]);
         }
+        var myFriendArray = allFriends.friendsArray;
         var newfriend = new allFriends.Friend(name, photo, score);
         allFriends.addFriend(newfriend);
         console.log(allFriends.friendsArray);
