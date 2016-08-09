@@ -1,5 +1,6 @@
 // Dependencies
 // =============================================================
+var bodyParser = require('body-parser');
 var express = require('express');
 var htmlRoutes = require('./app/routing/html-routes.js');
 var apiRoutes = require('./app/routing/api-routes.js');
@@ -8,6 +9,8 @@ var apiRoutes = require('./app/routing/api-routes.js');
 // =============================================================
 var app = express();
 var PORT = 3000;
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 htmlRoutes.getRoot(app);
 htmlRoutes.getSurvey(app);

@@ -3,7 +3,7 @@
 // scores[Array]
 function Friend(name, photo, score) {
     this.name = name;
-    this.photo_path = photo;
+    this.photo = photo;
     this.score = score;
 };
 var friendsArray = [];
