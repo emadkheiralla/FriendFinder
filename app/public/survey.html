@@ -176,7 +176,7 @@
 							<br>
 
 							<!-- Submit Button -->
-							<button type="submit" class="btn btn-primary btn-lg" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
+							<button data-toggle="modal" data-target="#myModal" type="submit" class="btn btn-primary btn-lg" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
 					 Submit Survey</button>
 
 						</form>
@@ -184,6 +184,24 @@
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Your closest matching friend is:</h4>
+	      </div>
+	      <div class="modal-body">
+	        
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
@@ -195,9 +213,19 @@
 				type: "POST",
 				data: $(this).serialize(),
 				success: function(data){
+					var currScore = data[data.length-1].score;
+					var closestScore = 0;
+					for (var i = 0; i < data.length; i++) {
+						if(data[i].score < data[i+1].score){
+							closestScore = data[i].score;
+						}
+					}
+					$(".modal-body").html('<h2>' + data[0].name + '</h2>' + '<img src="../data/' + data[0].photo + '" alt="Smiley face"></img>');
 					console.log(data);
 				}
 			});
+
+
 
 			return false;
 		});

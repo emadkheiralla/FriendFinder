@@ -10,7 +10,7 @@ var allFriends = require('../data/friends');
 
 
 function getFriends(app) {
-    app.get('/api/friends', function(req, res) {
+    app.get('/api/friendmatch', function(req, res) {
         // return the friendsArray
         res.json(allFriends.friendsArray);
     });
@@ -45,9 +45,11 @@ function postFriends(app) {
             score += sum(newArray[i], newArray[i++]);
         }
         var myFriendArray = allFriends.friendsArray;
+        myFriendArray.push({name: "Adam Karola", photo: "me2.png", score: 5});
+        myFriendArray.push({name: "Nat King", photo: "me3.png", score: 6});
+        myFriendArray.push({name: "Charles Kounter", photo: "me4.png", score: 7});
         var newfriend = new allFriends.Friend(name, photo, score);
         allFriends.addFriend(newfriend);
-        console.log(allFriends.friendsArray);
         res.json(allFriends.friendsArray);
     });
 }
